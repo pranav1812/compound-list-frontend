@@ -1,0 +1,22 @@
+<div class="detail-page-container">
+  <div class="details">
+    <img
+      class="details-img"
+      src="{{ sampleCompound.image }}"
+      alt="Card image cap"
+    />
+    <div class="info">
+      <p class="details-title">{{ sampleCompound.name }}</p>
+      <p class="details-description">{{ sampleCompound.description }}</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="edit-button" (click)="openEditModal()">Edit Compound</button>
+    <button class="delete-button" (click)="deleteCompound()">
+      Delete Compound
+    </button>
+  </div>
+
+  <app-compound-edit-modal *ngIf="showEditModal" (close)="closeEditModal()" />
+</div>

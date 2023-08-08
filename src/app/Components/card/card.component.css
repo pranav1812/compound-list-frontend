@@ -1,0 +1,30 @@
+.card {
+  box-shadow: 16px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 400px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+.card > a {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+img {
+  height: 300px;
+  width: 100%;
+  object-fit: contain;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+p {
+  margin-bottom: 24px;
+  margin-left: 12px;
+  font-size: xx-large;
+}
+
+a {
+  text-decoration: none;
+  color: #000000;
+}

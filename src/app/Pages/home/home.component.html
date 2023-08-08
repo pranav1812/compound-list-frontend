@@ -1,0 +1,25 @@
+<div class="home">
+  <div class="paginationStrip">
+    <button class="add-button" (click)="openCreateModal()">
+      Add Compound +
+    </button>
+    <div class="counter">
+      <button *ngIf="currentPage > 1" class="change-page">{{ "<" }}</button>
+      <span class="current-page">{{ currentPage }}</span>
+      <button *ngIf="currentPage < totalPages" class="change-page">
+        {{ ">" }}
+      </button>
+    </div>
+  </div>
+  <div class="ui-test">
+    <app-card [compound]="sampleCompound" />
+    <app-card [compound]="sampleCompound" />
+    <app-card [compound]="sampleCompound" />
+    <app-card [compound]="sampleCompound" />
+  </div>
+
+  <app-compound-create-modal
+    *ngIf="showCreateModal"
+    (close)="closeCreateModal()"
+  />
+</div>

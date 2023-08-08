@@ -1,0 +1,27 @@
+<div class="modal-overlay">
+  <div class="modal">
+    <h2>Edit Compound</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" [(ngModel)]="newCompound.name" />
+
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        [(ngModel)]="newCompound.description"
+      ></textarea>
+
+      <label for="image">Image Link</label>
+      <input
+        type="text"
+        id="image"
+        name="image"
+        [(ngModel)]="newCompound.image"
+      />
+
+      <button type="button" (click)="saveChanges()">Save</button>
+      <button type="button" (click)="closeModal()">Cancel</button>
+    </form>
+  </div>
+</div>

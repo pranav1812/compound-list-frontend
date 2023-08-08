@@ -1,0 +1,67 @@
+.details {
+  margin-top: 100px;
+  display: flex;
+  width: 100%;
+  height: 500px;
+  border: 1px solid rgba(0, 0, 0, 1);
+  border-radius: 10px;
+  justify-content: space-between;
+}
+
+.details-img {
+  width: 30%;
+  height: 100%;
+  object-fit: calc(100% - 20px);
+  border-right: solid 1px rgba(0, 0, 0, 0.2);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.details-title {
+  font-size: xx-large;
+  font-weight: 800;
+}
+
+.details-description {
+  margin-top: 20px;
+  font-size: large;
+  text-align: justify;
+  margin-right: 20px;
+  margin-top: 50px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.edit-button {
+  margin-top: 20px;
+  width: 250px;
+  height: 60px;
+  background-color: #3992f8;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.delete-button {
+  margin-top: 20px;
+  width: 250px;
+  height: 60px;
+  background-color: #ff0000;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 800;
+  cursor: pointer;
+}

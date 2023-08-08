@@ -1,0 +1,38 @@
+.home {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.paginationStrip {
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-button {
+  background-color: #3992f8;
+  position: sticky;
+  color: #ffffff;
+  width: 250px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 800;
+  transform: translate(0, -15px);
+}
+
+.ui-test {
+  display: flex;
+  margin: 60px 20px;
+  justify-content: space-between;
+}
+/*
+.counter {
+  margin-right: 20px;
+}
+*/
+.change-page {
+  margin: 0 16px;
+}
