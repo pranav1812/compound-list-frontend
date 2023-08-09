@@ -37,15 +37,26 @@ export class HomeComponent implements OnInit {
   }
 
   showCreateModal: boolean = false;
+  showUploadCSVModal: boolean = false;
 
   openCreateModal() {
     console.log('openCreateModal');
     this.showCreateModal = true;
   }
 
+  openUploadCSVModal() {
+    console.log('openUploadCSVModal');
+    this.showUploadCSVModal = true;
+  }
+
   closeCreateModal() {
     this.showCreateModal = false;
   }
+
+  closeUploadCSVModal() {
+    this.showUploadCSVModal = false;
+  }
+
   sampleCompound: Compound = {
     id: 1,
     name: 'Compound 1',

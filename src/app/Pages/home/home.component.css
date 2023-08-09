@@ -13,9 +13,20 @@
 
 .add-button {
   background-color: #3992f8;
-  position: sticky;
   color: #ffffff;
-  width: 250px;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  font-size: large;
+  font-weight: 800;
+  transform: translate(0, -15px);
+  margin-right: 20px;
+}
+
+.upload-csv-button {
+  background-color: #084601;
+  color: #ffffff;
+  width: 150px;
   height: 40px;
   border-radius: 10px;
   font-size: large;
@@ -26,7 +37,11 @@
 .ui-test {
   display: flex;
   margin: 60px 20px;
-  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.ui-test > app-card {
+  margin: 0 40px 40px 0;
 }
 /*
 .counter {

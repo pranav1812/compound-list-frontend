@@ -1,8 +1,14 @@
 <div class="home">
   <div class="paginationStrip">
-    <button class="add-button" (click)="openCreateModal()">
-      Add Compound +
-    </button>
+    <div class="create-data">
+      <button class="add-button" (click)="openCreateModal()">
+        Add Compound +
+      </button>
+      <button class="upload-csv-button" (click)="openUploadCSVModal()">
+        Upload csv
+      </button>
+    </div>
+
     <div class="counter">
       <a
         *ngIf="currentPage > 1"
@@ -25,12 +31,6 @@
       </a>
     </div>
   </div>
-  <!-- <div class="ui-test">
-    <app-card [compound]="sampleCompound" />
-    <app-card [compound]="sampleCompound" />
-    <app-card [compound]="sampleCompound" />
-    <app-card [compound]="sampleCompound" />
-  </div> -->
   <div class="ui-test">
     <app-card
       *ngFor="let compound of compoundService.compoundList$ | async"
@@ -42,4 +42,5 @@
     *ngIf="showCreateModal"
     (close)="closeCreateModal()"
   />
+  <app-upload-csv *ngIf="showUploadCSVModal" (close)="closeUploadCSVModal()" />
 </div>

@@ -49,6 +49,10 @@ export class CompoundService {
       .toPromise();
   }
 
+  async bulkUpsert(compounds: Compound[]): Promise<any> {
+    return this.http.post<any>(`${rootUrl}/compounds`, compounds).toPromise();
+  }
+
   async deleteCompound(id: number): Promise<any> {
     return this.http.delete<any>(`${rootUrl}/compounds/${id}`).toPromise();
   }

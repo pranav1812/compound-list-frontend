@@ -12,6 +12,7 @@ import { CardComponent } from './Components/card/card.component';
 import { ErrorComponent } from './Pages/error/error.component';
 import { CompoundEditModalComponent } from './Components/compound-edit-modal/compound-edit-modal.component';
 import { CompoundCreateModalComponent } from './Components/compound-create-modal/compound-create-modal.component';
+import { UploadCSVComponent } from './Components/upload-csv/upload-csv.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { CompoundCreateModalComponent } from './Components/compound-create-modal
     ErrorComponent,
     CompoundEditModalComponent,
     CompoundCreateModalComponent,
+    UploadCSVComponent,
   ],
   imports: [
     BrowserModule,
