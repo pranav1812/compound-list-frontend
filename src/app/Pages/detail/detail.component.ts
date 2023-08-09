@@ -1,12 +1,47 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Compound } from '../../../interfaces/compound';
+import { CompoundService } from '../../services/compound.service';
+import { switchMap, map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-detail',
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.css'],
 })
-export class DetailComponent {
+export class DetailComponent implements OnInit {
+  constructor(
+    private route: ActivatedRoute,
+    public compoundService: CompoundService
+  ) {}
+
+  ngOnInit() {
+    this.route.params.subscribe((params) => {
+      console.log('Details page params', params);
+      const compoundId = Number(params['id']);
+
+      const localFetch =
+        this.compoundService.getCompoundByIdLocally(compoundId);
+      if (localFetch) {
+        this.sampleCompound = localFetch;
+      } else {
+        console.log('Not found locally');
+
+        this.compoundService.getCompoundById(compoundId).subscribe(
+          (data: any) => {
+            this.sampleCompound = data.compound;
+            console.log('Details fetched from API');
+          },
+          (error) => {
+            console.log('Details fetch error', error);
+          }
+        );
+      }
+    });
+  }
+
+  compoundId: number = 0;
+
   showEditModal: boolean = false;
 
   openEditModal() {
@@ -25,12 +60,5 @@ export class DetailComponent {
     // logic
   }
 
-  sampleCompound: Compound = {
-    id: 1,
-    name: 'Compound 1',
-    description:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
-    image:
-      'https://upload.wikimedia.org/wikipedia/commons/2/22/Ammonium-alum-3D-vdW.png',
-  } as Compound;
+  sampleCompound: Compound = {} as Compound;
 }

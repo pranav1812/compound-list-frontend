@@ -4,18 +4,38 @@
       Add Compound +
     </button>
     <div class="counter">
-      <button *ngIf="currentPage > 1" class="change-page">{{ "<" }}</button>
+      <a
+        *ngIf="currentPage > 1"
+        [queryParams]="{ page: currentPage - 1 }"
+        [routerLink]="['/']"
+      >
+        <button class="change-page">{{ "<" }}</button>
+      </a>
+
       <span class="current-page">{{ currentPage }}</span>
-      <button *ngIf="currentPage < totalPages" class="change-page">
-        {{ ">" }}
-      </button>
+
+      <a
+        *ngIf="currentPage < totalPages"
+        [queryParams]="{ page: currentPage + 1 }"
+        [routerLink]="['/']"
+      >
+        <button class="change-page">
+          {{ ">" }}
+        </button>
+      </a>
     </div>
   </div>
+  <!-- <div class="ui-test">
+    <app-card [compound]="sampleCompound" />
+    <app-card [compound]="sampleCompound" />
+    <app-card [compound]="sampleCompound" />
+    <app-card [compound]="sampleCompound" />
+  </div> -->
   <div class="ui-test">
-    <app-card [compound]="sampleCompound" />
-    <app-card [compound]="sampleCompound" />
-    <app-card [compound]="sampleCompound" />
-    <app-card [compound]="sampleCompound" />
+    <app-card
+      *ngFor="let compound of compoundService.compoundList$ | async"
+      [compound]="compound"
+    ></app-card>
   </div>
 
   <app-compound-create-modal
