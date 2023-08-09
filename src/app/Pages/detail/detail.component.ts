@@ -24,16 +24,22 @@ export class DetailComponent implements OnInit {
         this.compoundService.getCompoundByIdLocally(compoundId);
       if (localFetch) {
         this.sampleCompound = localFetch;
+        this.sampleCompoundCopy = { ...this.sampleCompound };
       } else {
         console.log('Not found locally');
 
         this.compoundService.getCompoundById(compoundId).subscribe(
           (data: any) => {
             this.sampleCompound = data.compound;
+            this.sampleCompoundCopy = { ...this.sampleCompound };
             console.log('Details fetched from API');
           },
           (error) => {
             console.log('Details fetch error', error);
+            if (error.status === 404) {
+              console.log('Compound not found');
+              window.location.href = '/404-not-found';
+            }
           }
         );
       }
@@ -53,12 +59,22 @@ export class DetailComponent implements OnInit {
     this.showEditModal = false;
   }
 
-  deleteCompound() {
+  async deleteCompound() {
     console.log('deleteCompound');
     const confirmDelete = confirm('Are you sure you want to delete this?');
-    console.log(confirmDelete);
-    // logic
+    if (confirmDelete) {
+      await this.compoundService.deleteCompound(this.sampleCompound.id);
+      window.history.back();
+    }
+  }
+
+  saveChanges(event: any) {
+    console.log('saveChanges called in detail page');
+    console.log(event);
+    this.sampleCompound = event;
+    this.sampleCompoundCopy = { ...this.sampleCompound };
   }
 
   sampleCompound: Compound = {} as Compound;
+  sampleCompoundCopy: Compound = {} as Compound;
 }

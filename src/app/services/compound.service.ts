@@ -36,4 +36,20 @@ export class CompoundService {
   getCompoundById(id: number): Observable<any> {
     return this.http.get<any>(`${rootUrl}/compounds/${id}`);
   }
+
+  async updateCompound(id: number, compound: Compound): Promise<any> {
+    return this.http
+      .put<any>(`${rootUrl}/compounds/${id}`, compound)
+      .toPromise();
+  }
+
+  async createCompound(compound: Compound): Promise<any> {
+    return this.http
+      .post<any>(`${rootUrl}/compounds/createOne`, compound)
+      .toPromise();
+  }
+
+  async deleteCompound(id: number): Promise<any> {
+    return this.http.delete<any>(`${rootUrl}/compounds/${id}`).toPromise();
+  }
 }

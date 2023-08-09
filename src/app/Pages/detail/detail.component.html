@@ -18,5 +18,10 @@
     </button>
   </div>
 
-  <app-compound-edit-modal *ngIf="showEditModal" (close)="closeEditModal()" />
+  <app-compound-edit-modal
+    *ngIf="showEditModal"
+    [editedCompound]="sampleCompoundCopy"
+    (close)="closeEditModal()"
+    (save)="saveChanges($event)"
+  />
 </div>
