@@ -21,7 +21,7 @@
       <span class="current-page">{{ currentPage }}</span>
 
       <a
-        *ngIf="currentPage < totalPages"
+        *ngIf="currentPage < compoundService.totalPageCount"
         [queryParams]="{ page: currentPage + 1 }"
         [routerLink]="['/']"
       >

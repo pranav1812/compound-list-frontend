@@ -18,7 +18,7 @@ export class CompoundCreateModalComponent implements OnInit {
     // Logic to save changes
     console.log('saveChanges', this.newCompound);
     await this.compoundService.createCompound(this.newCompound);
-    this.closeModal();
+    window.location.reload();
   }
 
   closeModal() {

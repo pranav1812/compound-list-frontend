@@ -64,7 +64,7 @@ export class DetailComponent implements OnInit {
     const confirmDelete = confirm('Are you sure you want to delete this?');
     if (confirmDelete) {
       await this.compoundService.deleteCompound(this.sampleCompound.id);
-      window.history.back();
+      window.location.href = '/';
     }
   }
 

@@ -12,8 +12,24 @@ export class CompoundService {
     new BehaviorSubject<Compound[]>([]);
   compoundList$: Observable<Compound[]> =
     this.compoundListSubject.asObservable(); // $ is a convention to indicate that this is an Observable
+  compoundCount: number = 0;
+  totalPageCount: number = 0;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getCompoundCount().then((count) => {
+      this.compoundCount = count;
+      this.totalPageCount = Math.ceil(count / cardsPerPage);
+    });
+  }
+
+  async getCompoundCount(): Promise<number> {
+    console.log('getCompoundCount called');
+    const res = await this.http
+      .get<any>(`${rootUrl}/compounds/getLen`)
+      .toPromise();
+    console.log('getCompoundCount', res.count);
+    return res.count;
+  }
 
   getCompoundList(page: number): void {
     this.http

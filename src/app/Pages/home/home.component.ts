@@ -12,12 +12,23 @@ export class HomeComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     public compoundService: CompoundService
-  ) {}
+  ) {
+    console.log('Home Constructor called');
+  }
 
-  ngOnInit() {
+  async ngOnInit() {
+    // wait for 500 ms, so that constructor can finish: not a good idea though
+    await new Promise((resolve) => setTimeout(resolve, 500));
+    console.log('Home ngOnInit called');
     this.route.queryParams.subscribe((params) => {
       console.log(params);
       if (params['page']) {
+        if (
+          Number(params['page']) < 1 ||
+          Number(params['page']) > this.compoundService.totalPageCount
+        ) {
+          window.location.href = '/404-not-found';
+        }
         this.currentPage = Number(params['page']);
         this.compoundService.getCompoundList(params['page'] - 1);
         console.log(
